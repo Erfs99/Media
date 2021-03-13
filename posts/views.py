@@ -5,7 +5,7 @@ from .models import Post , Like
 
 class TweetListView(LoginRequiredMixin, ListView):
     model = Post
-    template_name = 'home.html'
+    template_name = 'index.html'
     ordering = ['-create_date']
 
 

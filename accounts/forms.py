@@ -14,6 +14,9 @@ class PictureWidget(forms.widgets.Widget):
 
 
 class SignupForm(forms.ModelForm):
+    phone=forms.IntegerField(required=True,widget=forms.NumberInput(  attrs={         
+                "class": "form-control"
+            }))
     class Meta:
         model = User
         fields = ['phone', ]
@@ -23,14 +26,16 @@ class ProfileView(forms.ModelForm):
     user_name=forms.CharField(validators=[validators.MinLengthValidator(3)])
     first_name=forms.CharField(required=False,widget=forms.TextInput(
         attrs={
-            "placeholder":"optional"}))
+            "placeholder":"optional",
+            "class": "form-control"}))
 
     last_name = forms.CharField(required=False, widget=forms.TextInput(
         attrs={
-            "placeholder": "optional"}))
+            "placeholder": "optional",
+            "class": "form-control"}))
 
     YEARS = [x for x in range(1940, 2003)]
-    birthdate = forms.DateField(initial="1994-06-21", widget=forms.SelectDateWidget(years=YEARS))
+    birthdate = forms.DateField(initial="1994-06-21", widget=forms.SelectDateWidget(years=YEARS,))
 
     class Meta:
         model = Profile

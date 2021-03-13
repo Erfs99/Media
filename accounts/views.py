@@ -30,7 +30,7 @@ def ProfileUpdateView(request):
 
 class Account_info(View):
     form_class = ProfileView
-    template_name = "add_info.html"
+    template_name = "accounts/add_info.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'form': self.form_class})
@@ -53,7 +53,7 @@ class Account_info(View):
 
 class Account_info2(View):
     form_class = ProfileView2
-    template_name = "add_info2.html"
+    template_name = "accounts/add_info2.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'form': self.form_class})
@@ -79,7 +79,7 @@ class Account_info2(View):
 
 class SignupView(View):
     form_class = forms.SignupForm
-    template_name = 'register.html'
+    template_name = 'accounts/register.html'
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name, {'form': self.form_class})
@@ -142,7 +142,7 @@ class VerifyTokenView(View):
                 expiration_date.year) + ' ' + str(expiration_date.hour) + ':' + str(expiration_date.minute) + ':' + str(
                 expiration_date.second)
 
-            return render(request, 'verify.html', {'phone': phone, 'expiration_date': expr})
+            return render(request, 'accounts/verify.html', {'phone': phone, 'expiration_date': expr})
         except User.DoesNotExist:
             return redirect("accounts:signup")
 

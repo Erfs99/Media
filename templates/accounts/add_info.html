@@ -1,0 +1,42 @@
+{% extends 'layouts/base1.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+<br><br><br>
+<div class="container">
+   <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+       <fieldset class="form-group">
+         <legend class="border-bottom mb-4"> Step 3 of 4 (Create Profile) </legend>
+
+
+        {% for error in form.non_field_errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+           {% for field in form %}
+          
+        <p>
+            {{ field.label_tag }}<br>
+            {{ field }}
+            
+            {% for error in field.errors %}
+            
+        <p style="color: red">{{ error }}</p>
+  
+            {% endfor %}
+            
+        </p>
+        {% endfor %}
+        </fieldset>
+
+             <button class="btn btn-outline-info" type="submit">Next</button>
+    </form>
+</div>
+
+</body>
+</html>
+{% endblock %}
